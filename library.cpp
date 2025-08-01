@@ -5,12 +5,15 @@
 
 void helloWorld(const v8::FunctionCallbackInfo<v8::Value> &args) {
     v8::Isolate* isolate = args.GetIsolate();
+    v8::HandleScope handle_scope(isolate);
+
     args.GetReturnValue().Set(v8::String::NewFromUtf8(isolate, "Hello World!", v8::NewStringType::kNormal).ToLocalChecked());
 }
 
 
 void initWindowAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     v8::Isolate* isolate = args.GetIsolate();
+    v8::HandleScope handle_scope(isolate);
 
     if (args.Length() < 3) {
         isolate->ThrowException(v8::String::NewFromUtf8Literal(isolate, "Wrong number of arguments! 3 arguments needed!"));
@@ -41,6 +44,7 @@ void initWindowAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
 
 void setTargetFPSAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     v8::Isolate* isolate = args.GetIsolate();
+    v8::HandleScope handle_scope(isolate);
 
     if (args.Length() < 1 || !args[0]->IsNumber()) {
         isolate->ThrowException(v8::String::NewFromUtf8Literal(isolate, "Wrong number of arguments! 1 argument needed!"));
@@ -54,6 +58,7 @@ void setTargetFPSAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
 
 void windowShouldCloseAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     v8::Isolate* isolate = args.GetIsolate();
+    v8::HandleScope handle_scope(isolate);
     args.GetReturnValue().Set(v8::Boolean::New(isolate, WindowShouldClose()));
 }
 
@@ -67,6 +72,7 @@ void endDrawingAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
 
 void clearBackgroundAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     v8::Isolate* isolate = args.GetIsolate();
+    v8::HandleScope handle_scope(isolate);
 
     if (args.Length() < 1 || !args[0]->IsObject()) {
         isolate->ThrowException(v8::String::NewFromUtf8Literal(isolate, "Expected an object"));
@@ -80,7 +86,7 @@ void clearBackgroundAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
 
 void drawTextAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     v8::Isolate* isolate = args.GetIsolate();
-    // v8::HandleScope handle_scope(isolate); // what it does?
+    v8::HandleScope handle_scope(isolate);
 
     if (args.Length() < 1 || !args[0]->IsObject()) {
         isolate->ThrowException(v8::String::NewFromUtf8Literal(isolate, "Expected an object"));
