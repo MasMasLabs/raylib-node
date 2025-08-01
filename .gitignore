@@ -1,0 +1,46 @@
+# CLion and IntelliJ
+.idea/
+cmake-build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+install_manifest.txt
+
+# Ninja build system (if used)
+build.ninja
+.ninja_deps
+.ninja_log
+
+# User-specific
+*.swp
+*.swo
+*.DS_Store
+*.log
+
+# Executables and libs
+*.out
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.node
+
+# Test artifacts
+Testing/
+test_detail.xml
+
+# Optional: VSCode (if you use it sometimes)
+.vscode/
+
+# Optional: macOS specific
+.DS_Store
+
+dist/
