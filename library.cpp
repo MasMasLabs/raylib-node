@@ -62,6 +62,10 @@ void windowShouldCloseAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     args.GetReturnValue().Set(v8::Boolean::New(isolate, WindowShouldClose()));
 }
 
+void closeWindowadapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
+    CloseWindow();
+}
+
 void beginDrawingAdapter(const v8::FunctionCallbackInfo<v8::Value>& args) {
     BeginDrawing();
 }
@@ -113,6 +117,7 @@ void initialize(v8::Local<v8::Object> exports) {
     NODE_SET_METHOD(exports, "initWindow", initWindowAdapter);
     NODE_SET_METHOD(exports, "setTargetFPS", setTargetFPSAdapter);
     NODE_SET_METHOD(exports, "windowShouldClose", windowShouldCloseAdapter);
+    NODE_SET_METHOD(exports, "closeWindow", closeWindowadapter);
     NODE_SET_METHOD(exports, "beginDrawing", beginDrawingAdapter);
     NODE_SET_METHOD(exports, "endDrawing", endDrawingAdapter);
     NODE_SET_METHOD(exports, "clearBackground", clearBackgroundAdapter);
